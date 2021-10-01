@@ -1,5 +1,5 @@
 #include <string.h>
-#include "employee.h"
+#include "Employee.h"
 PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int tableSize, long targetNumber){
     const PtrToConstEmployee endPtr = ptr + tableSize;
     for(; ptr < endPtr; ptr++)  //search until end of table  ptr++ will increment by what??
