@@ -1,6 +1,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "Employee.h"
+
 Employee EmployeeTable[] =
 {
     {1001l, "Daphne Borromeo",   "909-555-2134", 8.78},

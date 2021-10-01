@@ -1,5 +1,5 @@
 #include <string.h>
-#include "employee.h"
+#include "Employee.h"
 //NOTE: 5 functions have been defined below
 //ptr - points to table to be searched
 //tableSize - size of the table
@@ -35,7 +35,7 @@ static int compareEmployeePhone( const void *targetPtr, PtrToConstEmployee table
 
 static int compareEmployeeSalary(const void *targetPtr, PtrToConstEmployee tableValuePtr)
 {
-    return * (double *) targetPtr != tableValuePtr->number; //const void *targetPtr ==> typecast as double pointer then dereference
+    return * (double *) targetPtr != tableValuePtr->salary; //const void *targetPtr ==> typecast as double pointer then dereference
 }
 
 
@@ -51,9 +51,9 @@ PtrToEmployee searchEmployeeByName(PtrToConstEmployee ptr, int size, char* name)
 }
 PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int size, char* phone)
 {
-    return searchEmployeeTable(ptr, size, phone, compareEmployeePhone)
+    return searchEmployeeTable(ptr, size, phone, compareEmployeePhone);
 }
-PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int size, double number)
+PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int size, double salary)
 {
-    return searchEmployeeTable(ptr, size, &number, compareEmployeeNumber);
+    return searchEmployeeTable(ptr, size, &salary, compareEmployeeSalary);
 }
