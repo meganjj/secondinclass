@@ -3,6 +3,8 @@
 #include <time.h>
 
 int isMagicSquare(int array[3][3]);
+int numbersAreUnique(int arr[3][3], int num);
+
 
 int isMagicSquare(int array[3][3]) {
     
@@ -49,6 +51,17 @@ int isMagicSquare(int array[3][3]) {
     return 1;
 
 }
+
+int numbersAreUnique(int arr[3][3], int num){
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (arr[i][j] == num) {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
         
 
 int main() {
@@ -64,7 +77,6 @@ int main() {
         {7, 8, 9}
     };
 
-    
     printf("Magic Square:\n");
     for (int i=0; i < 3; i++) {
         for (int j=0; j<3; j++) {
@@ -99,6 +111,49 @@ int main() {
         printf("Array is NOT a Lo Shu Magic Square.\n");
     }
     
+
+    //generating random numbers to fill a 2d array and then running it in a loop until it finds a magic square
+    int randomSquare[3][3];
+    time_t t;
+    srand((unsigned) time(&t));
+
+    while (isMagicSquare(randomSquare) != 1){
+    for(int i = 0; i < 3; i++ ) {
+        for (int j = 0; j < 3; j++) {
+            randomSquare[i][j] = 0; 
+        }
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            while (1) {
+                int num = (rand() % 9) + 1;
+                if (numbersAreUnique(randomSquare, num))
+                {
+                    randomSquare[i][j] = num;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (isMagicSquare(randomSquare) != 1) {
+        printf("This is not a magic square!\n");
+    }
+    else {
+        printf("This is a magic square!\n");
+    }
     
+    
+    printf("Magic Square:\n");
+        for (int i=0; i < 3; i++) {
+            for (int j=0; j<3; j++) {
+                printf("%d ", randomSquare[i][j]);
+                if (j == 2) {
+                    printf("\n");
+                }
+            }
+        }
+    }
 
 }
